@@ -86,18 +86,28 @@ The orchestrator talks to you in the language you write in. The project document
 
 Requires **Python 3** (used by the hooks). For audits, `gitleaks`, `semgrep`, `trivy` and `osv-scanner` are recommended: `/bottega:setup` checks which ones are missing.
 
-**To try it for one session**, without installing anything:
+**To install it** from GitHub (the repository doubles as a plugin marketplace):
 ```bash
-cd ~/projects/my-app
-claude --plugin-dir /home/marco/work/bottega-sw-dev-agents
-```
-
-**To install it permanently** through the bundled local marketplace:
-```bash
-claude plugin marketplace add /home/marco/work/bottega-sw-dev-agents
+claude plugin marketplace add mrclttnz/bottega-sw-dev-agents
 claude plugin install bottega@bottega-local
 ```
-After changing the plugin's files, reload it from `/plugin`, or restart the session.
+
+**To work from a local clone** (to try it or to customize it), clone the repository wherever you like:
+```bash
+git clone https://github.com/mrclttnz/bottega-sw-dev-agents.git
+```
+
+Then either load it for a single session, without installing anything, by running Claude Code from your application's folder:
+```bash
+claude --plugin-dir <path-to>/bottega-sw-dev-agents
+```
+
+or install it from the clone, so your local changes are the ones in use:
+```bash
+claude plugin marketplace add <path-to>/bottega-sw-dev-agents
+claude plugin install bottega@bottega-local
+```
+Replace `<path-to>` with the folder where you cloned the repository. After changing the plugin's files, reload it from `/plugin`, or restart the session.
 
 ## What you'll find in your project
 
