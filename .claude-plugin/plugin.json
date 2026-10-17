@@ -1,0 +1,11 @@
+{
+  "name": "bottega",
+  "displayName": "Bottega — software development team",
+  "version": "0.2.0",
+  "description": "A team of agents and skills that takes an application from idea to deployment: requirements, decisions, architecture, data, code, tests, code review, security and release, with mandatory quality and security gates.",
+  "author": {
+    "name": "Marco Lattanzio"
+  },
+  "license": "MIT",
+  "keywords": ["sdlc", "requirements", "architecture", "security", "code-review", "devops", "team"]
+}

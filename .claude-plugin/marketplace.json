@@ -1,0 +1,14 @@
+{
+  "name": "bottega-local",
+  "owner": {
+    "name": "Marco Lattanzio"
+  },
+  "description": "Local marketplace with the Bottega plugin: a team of agents for secure software development.",
+  "plugins": [
+    {
+      "name": "bottega",
+      "source": "./",
+      "description": "A team of agents and skills for secure software development, from idea to deployment."
+    }
+  ]
+}
