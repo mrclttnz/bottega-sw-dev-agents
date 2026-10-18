@@ -100,6 +100,37 @@ class CommandGuard(unittest.TestCase):
             with self.subTest(command=command[:30]):
                 self.assertEqual(self.decision(command), "deny")
 
+    def test_blocks_python_packages_outside_a_virtual_environment(self):
+        for command in (
+            "sudo pip install requests",
+            "sudo -H pip3 install -r requirements.txt",
+            "sudo python3 -m pip install flask",
+            "sudo pip uninstall requests",
+            "pip install --user black",
+            "python3.12 -m pip install -U --user ruff",
+            "pip install --break-system-packages httpx",
+            "PIP_BREAK_SYSTEM_PACKAGES=1 pip install httpx",
+            "uv pip install --system pytest",
+        ):
+            with self.subTest(command=command):
+                self.assertEqual(self.decision(command), "deny")
+
+    def test_lets_virtual_environment_installs_through(self):
+        for command in (
+            "python3 -m venv .venv",
+            "source .venv/bin/activate && pip install -r requirements.txt",
+            ".venv/bin/pip install -e '.[dev]'",
+            "python -m pip install --upgrade pip",
+            "uv pip install pytest",
+            "uv sync",
+            "pipx install ruff",
+            "uv tool install ruff",
+            "sudo apt-get install -y python3-venv",
+            "pip install requests --user-agent-test",
+        ):
+            with self.subTest(command=command):
+                self.assertIsNone(self.decision(command))
+
     def test_asks_before_irreversible_actions(self):
         for command in (
             "git push origin feature/login",

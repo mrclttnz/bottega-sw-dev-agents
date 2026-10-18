@@ -27,9 +27,11 @@ Rules shared by `code-reviewer`, `security-engineer`, and whoever consumes their
 ## Class (drives the gate)
 | Class | Rule |
 |---|---|
-| **BLOCKER** | The slice cannot close. Applies to every CRITICAL or HIGH finding, every violation of a [MUST] rule in the security standard, and every unmet acceptance criterion |
-| **FIX-IN-SLICE** | Must be fixed in the current slice, but needs only a targeted check, not a full new review |
+| **BLOCKER** | The slice cannot close. Applies to every CRITICAL or HIGH finding, every violation of a [MUST] rule in the security standard, every violation of a [BLOCKER] rule in a language standard, and every unmet acceptance criterion |
+| **FIX-IN-SLICE** | Must be fixed in the current slice, but needs only a targeted check, not a full new review. Applies at least to every violation of a [FIX-IN-SLICE] rule in a language standard |
 | **BACKLOG** | Recorded as technical debt in `docs/STATUS.md`, to be scheduled |
+
+Language standards (e.g. `python-standard.md`) tag each rule [BLOCKER] or [FIX-IN-SLICE], which sets the minimum class of a violation. Untagged rules are recommendations, classified by impact.
 
 ## Risk acceptance
 - **CRITICAL** and **HIGH** security findings and [MUST] violations **cannot be accepted**. They must be fixed.

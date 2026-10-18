@@ -1,7 +1,8 @@
 """PreToolUse hook (Bash).
 
 - Blocks insecure commands (piping from the Internet into a shell, disabling
-  TLS verification, 777 permissions, catastrophic deletions, plaintext secrets).
+  TLS verification, 777 permissions, catastrophic deletions, plaintext secrets,
+  Python packages installed outside a virtual environment).
 - Asks for confirmation on irreversible or outward-facing actions (deploys,
   pushes, publishing, infrastructure changes, dropping tables, reading .env).
 """
@@ -28,6 +29,12 @@ BLOCK = [
      "it disables TLS certificate verification"),
     (re.compile(r"\bgit\s+push\b[^\n]*(?:--force\b|-f\b)[^\n]*\b(?:main|master|production|prod)\b"),
      "it force-pushes to a main branch"),
+    (re.compile(r"\bsudo\b[^\n|;&]*\b(?:pip[\d.]*|python[\d.]*\s+-m\s+pip)\s+(?:un)?install\b|"
+                r"\b(?:pip[\d.]*|-m\s+pip)\s+install\b[^\n|;&]*\s--user(?=\s|$)|"
+                r"\buv\s+pip\s+(?:un)?install\b[^\n|;&]*\s--system(?=\s|$)|"
+                r"--break-system-packages\b|\bPIP_BREAK_SYSTEM_PACKAGES\s*=\s*(?:1|true|yes)\b"),
+     "it installs Python packages outside a virtual environment. Create and activate one (.venv), "
+     "or use pipx or uv tool for command-line tools"),
 ]
 
 ASK = [

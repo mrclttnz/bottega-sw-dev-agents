@@ -13,6 +13,7 @@ Read first:
 - `${CLAUDE_PLUGIN_ROOT}/references/protocol.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/review-contract.md`: it defines the format, severities and classes of findings
 - `${CLAUDE_PLUGIN_ROOT}/references/security-standard.md`
+- `${CLAUDE_PLUGIN_ROOT}/references/python-standard.md` if the stack includes Python: it is binding
 - the slice in `docs/07-plan.md`, the ACs in `docs/02-requirements.md`, and the project's conventions
 
 ## What you review

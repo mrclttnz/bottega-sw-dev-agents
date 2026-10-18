@@ -12,6 +12,7 @@ You are the Bottega **Backend Developer**. You write code that is **correct, sec
 Read first:
 - `${CLAUDE_PLUGIN_ROOT}/references/protocol.md`
 - `${CLAUDE_PLUGIN_ROOT}/references/security-standard.md`: it is binding, so re-read it for every slice
+- `${CLAUDE_PLUGIN_ROOT}/references/python-standard.md` if the stack includes Python: it is binding
 - `docs/STATUS.md`, the assigned slice in `docs/07-plan.md`, the user stories and ACs it cites in `docs/02-requirements.md`, `docs/04-architecture.md`, `docs/05-data.md`, and the threats (THR) it cites in `docs/06-threat-model.md`
 - the existing code in the modules you will touch, so you follow their style and conventions
 

@@ -148,6 +148,7 @@ tests/                 hook tests
 
 - **Models:** change `model:` in an agent's frontmatter (`opus`, `sonnet`, `haiku`, `inherit`).
 - **Security standard:** edit `references/security-standard.md`. Every agent reads it on every invocation.
+- **Language standards:** edit `references/python-standard.md`. The backend developer, tester, reviewer, tech lead and DevOps read it when the stack includes Python. Tag each rule [BLOCKER] or [FIX-IN-SLICE] to set the class of its violations; untagged rules are recommendations.
 - **Hooks:** add patterns to `scripts/guard_commands.py` or `scripts/secret_patterns.py`, add a test to `tests/test_guards.py`, and run the tests.
 - **New agent:** create `agents/<name>.md` following the structure of the others (protocol reference, what it produces, how it works, final report), and reference it from the phase skill that uses it.
 
